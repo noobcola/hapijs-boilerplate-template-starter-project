@@ -13,7 +13,12 @@ exports.register = function(server, options, next) {
             method: 'GET',
             path: '/api/v1/loan/{id}',
             config: {
-                handler: loansController.getById
+                handler: loansController.getById,
+                validate: {
+                    params: {
+                        id: Joi.string().length(8, 'utf8').required()
+                    }
+                }
             }
         }
     ]);
