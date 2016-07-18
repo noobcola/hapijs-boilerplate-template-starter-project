@@ -1,0 +1,16 @@
+{
+  "name": "parkside-lending",
+  "version": "1.0.0",
+  "description": "Loan Submission Form",
+  "main": "index.js",
+  "dependencies": {
+    "hapi": "13.5.0",
+    "joi": "9.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
