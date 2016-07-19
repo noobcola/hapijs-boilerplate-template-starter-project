@@ -13,7 +13,7 @@ exports.register = function(server, options, next) {
         },
         {
             method: 'GET',
-            path: '/loanForm',
+            path: '/',
             handler: {
                 view: 'loanform'
             }
