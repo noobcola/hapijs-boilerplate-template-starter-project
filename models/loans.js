@@ -23,7 +23,7 @@ class LoansModel {
         }
 
         //Rule: If Loan to Value (LTV) is greater than 40%, we cannot accept the loan
-        newLoan.status = loanParams.loanAmount / loanParams.propertyValue > .40
+        newLoan.isAccepted = loanParams.loanAmount / loanParams.propertyValue > .40
 
         this.database[newLoan.id] = newLoan;
 

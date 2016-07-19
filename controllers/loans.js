@@ -14,7 +14,13 @@ class LoansController {
         var loan =  this.loanModel.getById(loanId);
         console.log(loan);
 
-        reply(`Your loan ID is: ${loanId}`);
+        reply(loan);
+    }
+
+    addLoan(request, reply){
+        var loanId = this.loanModel.addLoan(request);
+
+        reply({loanId: loanId});
     }
 
 }
