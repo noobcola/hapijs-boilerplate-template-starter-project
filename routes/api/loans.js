@@ -16,7 +16,7 @@ exports.register = function(server, options, next) {
                 handler: loansController.getById,
                 validate: {
                     params: {
-                        id: Joi.string().length(8, 'utf8').required()
+                        id: Joi.string().required()
                     }
                 }
             }

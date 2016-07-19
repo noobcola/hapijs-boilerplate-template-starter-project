@@ -8,7 +8,7 @@ function showAlert(type, message){
 function callApi(params, callback){
     var opts = {
         method: "GET",
-        url: "https://localhost:8000" + params.endpoint,
+        url:  params.endpoint,
         dataType: 'json',
         async: true,
         success: function(data){

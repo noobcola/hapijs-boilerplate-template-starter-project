@@ -13,6 +13,11 @@ server.connection({ port: 8000, host: 'localhost', tls: tls});
 //Use a simple in-memory map as a database for this project
 var database = {};
 
+// Expose database for tests
+if (process.env.NODE_ENV === 'test') {
+    server.database = database;
+}
+
 var plugins = [
     require('vision'), require('inert'),
     {
@@ -27,8 +32,6 @@ var plugins = [
 ];
 
 server.register(plugins, (err) => {
-    if (err) { throw err; }
-
     //serve static files
     server.route({
         method: 'GET',
@@ -48,9 +51,16 @@ server.register(plugins, (err) => {
         path: 'templates'
     });
 
-    server.start(function(err) {
-        if (err) { throw err; }
+    if (!module.parent) {
+        server.start(function(err) {
+            //Don't throw errors in tests
+            if (process.env.NODE_ENV !== 'test'){
+                if (err) { throw err; }
+            }
 
-        console.log('info', 'Server running at: ' + server.info.uri);
-    });
+            server.log('Server running at: ' + server.info.uri);
+        });
+    }
 });
+
+module.exports = server;
