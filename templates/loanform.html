@@ -122,10 +122,21 @@
         if (e.isDefaultPrevented()) {
             showAlert('danger', '<strong>Error submitting loan.</strong> Please check your form values and try again');
         } else {
-            // clear form
-            $('#loan-form').find('input').val('');
-            showAlert('success', '<strong>Success!</strong> Your loan ID is: 3du245');
+            var params = {
+                method: 'POST',
+                endpoint: '/api/v1/loan',
+                data: $(this).serialize()
+            };
 
+            callApi(params, function(err, data){
+                if (err){
+                    showAlert('danger', '<strong>Error submitting loan.</strong> Please check your form values and try again');
+                } else {
+                    //clear form
+                    $(this).find('input').val('');
+                    showAlert('success', '<strong>Success!</strong> Your loan ID is: '+data.loanId);
+                }
+            });
         }
         e.preventDefault();
         return false;
