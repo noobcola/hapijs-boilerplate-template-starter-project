@@ -15,7 +15,7 @@ A simple web service developed in NodeJS that handles basic loan submissions. Th
 
 ## Tests
 
-* Install lab: `npm install -g lab`
+* Install lab: `npm install -g lab` or `sudo npm install -g lab` if you're running into permission issues.
 * Run command `npm test`
 
 ## Notes:
