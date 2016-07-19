@@ -1,5 +1,5 @@
 var Joi = require('joi');
-var LoansController = require('../../controllers/loans.js');
+var LoansController = require('../../controllers/api/loans.js');
 
 exports.register = function(server, options, next) {
     // Setup the controller

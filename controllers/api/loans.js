@@ -1,6 +1,6 @@
 "use strict";
 
-const LoansModel = require('../models/loans.js')
+const LoansModel = require('../../models/loans.js')
 
 class LoansController {
 
