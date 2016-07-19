@@ -8,7 +8,7 @@ server.connection({ port: 8000, host: 'localhost'});
 var database = {};
 
 var plugins = [
-    require('vision'),
+    require('vision'), require('inert'),
     {
         register: require('./routes/api/loans.js'),
         options: {
@@ -22,6 +22,17 @@ var plugins = [
 
 server.register(plugins, (err) => {
     if (err) { throw err; }
+
+    //serve static files
+    server.route({
+        method: 'GET',
+        path: '/{param*}',
+        handler: {
+            directory: {
+                path: 'static'
+            }
+        }
+    });
 
     server.views({
         engines: {
