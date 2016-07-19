@@ -72,12 +72,12 @@
             <form id="loan-form">
                 <fieldset class="form-group">
                     <label for="loanAmount">Loan Amount</label>
-                    <input type="number" min="1" class="form-control" id="loanAmount" name="loanAmount" placeholder="Enter loan amount" required>
+                    <input type="number" min="1" step=".01" class="form-control" id="loanAmount" name="loanAmount" placeholder="Enter loan amount" required>
                     <div class="help-block with-errors"></div>
                 </fieldset>
                 <fieldset class="form-group">
                     <label for="propertyValue">Property Value</label>
-                    <input type="number" min="1" class="form-control" id="propertyValue" name="propertyValue" placeholder="Enter property value" required>
+                    <input type="number" min="1" step=".01" class="form-control" id="propertyValue" name="propertyValue" placeholder="Enter property value" required>
                     <div class="help-block with-errors"></div>
                 </fieldset>
                 <fieldset class="form-group">
@@ -123,6 +123,8 @@
                 if (err){
                     showAlert('danger', '<strong>Error submitting loan.</strong> Please check your form values and try again');
                 } else {
+                    //clear old alerts
+                    $('.alert-container').html('');
                     //clear form
                     $('#loan-form').find('input').val('');
                     showAlert('success', '<strong>Success!</strong> Your loan ID is: '+data.loanId);
