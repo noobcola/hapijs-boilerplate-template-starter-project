@@ -53,12 +53,9 @@ server.register(plugins, (err) => {
 
     if (!module.parent) {
         server.start(function(err) {
-            //Don't throw errors in tests
-            if (process.env.NODE_ENV !== 'test'){
-                if (err) { throw err; }
-            }
+            if (err) { throw err; }
 
-            server.log('Server running at: ' + server.info.uri);
+            console.log('Server running at: ' + server.info.uri);
         });
     }
 });
