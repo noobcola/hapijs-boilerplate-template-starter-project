@@ -2,13 +2,8 @@ const Hapi = require('hapi');
 const Path = require('path');
 const Fs = require('fs');
 
-var tls = {
-    key: Fs.readFileSync(`${__dirname}/certs/key.pem`),
-    cert: Fs.readFileSync(`${__dirname}/certs/cert.pem`)
-};
-
 const server = new Hapi.Server();
-server.connection({ port: 8000, host: 'localhost', tls: tls});
+server.connection({ port: 8000, host: 'localhost'});
 
 //Use a simple in-memory map as a database for this project
 var database = {};
@@ -43,6 +38,7 @@ server.register(plugins, (err) => {
         }
     });
 
+    // load views
     server.views({
         engines: {
             html: require('handlebars')
