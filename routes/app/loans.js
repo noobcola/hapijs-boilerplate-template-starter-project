@@ -1,29 +1,29 @@
-var Joi = require('joi');
+'use strict';
 
-exports.register = function(server, options, next) {
+exports.register = function (server, options, next) {
 
-    // Declare routes
-    server.route([
-        {
-            method: 'GET',
-            path: '/loanStatus',
-            handler: {
-                view: 'loanstatus'
-            }
-        },
-        {
-            method: 'GET',
-            path: '/',
-            handler: {
-                view: 'loanform'
-            }
-        }
-    ]);
+  // Declare routes
+  server.route([
+    {
+      method: 'GET',
+      path: '/loanStatus',
+      handler: {
+        view: 'loanstatus'
+      }
+    },
+    {
+      method: 'GET',
+      path: '/',
+      handler: {
+        view: 'loanform'
+      }
+    }
+  ]);
 
-    next();
-}
+  next();
+};
 
 exports.register.attributes = {
-    name: 'routes-app-loans',
-    version: '1.0.0'
+  name: 'routes-app-loans',
+  version: '1.0.0'
 };

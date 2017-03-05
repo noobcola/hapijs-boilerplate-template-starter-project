@@ -7,7 +7,7 @@ function showAlert(type, message){
 
 function callApi(params, callback){
     var opts = {
-        method: "GET",
+        method: 'GET',
         url:  params.endpoint,
         dataType: 'json',
         async: true,
@@ -17,7 +17,7 @@ function callApi(params, callback){
         error: function(jqXHR, textStatus, errorThrown){
             callback(errorThrown);
         }
-    }
+    };
 
     Object.assign(opts, params);
 
